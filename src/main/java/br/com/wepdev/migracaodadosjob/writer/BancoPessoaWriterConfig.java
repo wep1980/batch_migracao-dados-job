@@ -17,16 +17,16 @@ import java.sql.SQLException;
 public class BancoPessoaWriterConfig {
 
     @Bean
-    public JdbcBatchItemWriter<Pessoa> bancoPessoaWriter(@Qualifier("appDataSource")DataSource dataSource){
+    public JdbcBatchItemWriter<Pessoa> bancoPessoaWriter(@Qualifier("appDataSource") DataSource dataSource){
 
         return new JdbcBatchItemWriterBuilder<Pessoa>()
                 .dataSource(dataSource)
-                .sql("INSERT INTO pessoa (id, nome, email, dataNascimento, idade) VALUES (?, ?, ?, ?, ?)")
+                .sql("INSERT INTO pessoa (id, nome, email, data_nascimento, idade) VALUES (?, ?, ?, ?, ?)")
                 .itemPreparedStatementSetter(itemPreparedStatementSetter())
                 .build();
     }
 
-    private ItemPreparedStatementSetter itemPreparedStatementSetter() {
+    private ItemPreparedStatementSetter<Pessoa> itemPreparedStatementSetter() {
 
         return new ItemPreparedStatementSetter<Pessoa>() {
 

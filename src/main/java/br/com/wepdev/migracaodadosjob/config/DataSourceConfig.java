@@ -28,7 +28,6 @@ public class DataSourceConfig {
      * Banco da aplicação
      * @return
      */
-    @Primary
     @Bean
     @ConfigurationProperties(prefix = "app.datasource")
     public DataSource appDataSource(){
