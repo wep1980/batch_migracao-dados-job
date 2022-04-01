@@ -26,7 +26,7 @@ public class MigrarPessoasStepConfig {
 
         return stepBuilderFactory
                 .get("migrarPessoasStep")
-                .<Pessoa, Pessoa>chunk(1)
+                .<Pessoa, Pessoa>chunk(10000)// Existem 10000 registros para serem salvos no banco de dados, então com um chunk de tamanho 10000 diminui o tempo de processamento do mesmo
                 .reader(arquivoPessoaReader)
                 .writer(pessoaClassifierWrite)
                 .stream(arquivoPessoasInvalidasWriter)

@@ -18,7 +18,7 @@ public class ArquivoPessoasInvalidasWriterConfig {
                 .name("arquivoPessoasInvalidasWriter")
                 .resource(new FileSystemResource("files/pessoas_invalidas.csv"))
                 .delimited()
-                .names("id") // Somente o Id da pessoa sera escrito para identificar a pessoa invalida
+                .names("email") // Somente o Id da pessoa sera escrito para identificar a pessoa invalida
                 .build();
     }
 }

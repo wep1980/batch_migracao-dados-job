@@ -24,7 +24,7 @@ public class MigrarDadosBancariosStepConfig {
 
         return stepBuilderFactory
                 .get("migrarDadosBancariosStep")
-                .<DadosBancarios, DadosBancarios>chunk(1)
+                .<DadosBancarios, DadosBancarios>chunk(10000)// Existem 10000 registros para serem salvos no banco de dados, então com um chunk de tamanho 10000 diminui o tempo de processamento do mesmo
                 .reader(arquivoDadosBancariosReader)
                 .writer(bancoDadosBancariosWriter)
                 .build();
